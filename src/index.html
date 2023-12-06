@@ -9,6 +9,22 @@
     <title>Pinterest Clone App</title>
 </head>
 <body>
-
+    <header class="page-header">
+        <div class="header-logo">Pinterest</div>
+        <div class="search-form">
+            <label for="header-search">
+                <input type="text" placeholder="Search" id="header-search">
+            </label>
+        </div>
+        <div class="header-select">
+            <label for="select-board">Selected board: </label>
+            <select name="boards" id="select-board" >
+                <option value="board__1">Board 1</option>
+                <option value="board__2">Board 2</option>
+                <option value="board__3">Board 3</option>
+            </select>
+        </div>
+    </header>
+    <div class="wrapper" id="root"></div>
 </body>
 </html>
