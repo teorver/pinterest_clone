@@ -7,10 +7,16 @@
   font-family: 'Merriweather', sans-serif;
 }
 
+body{
+  background-color: rgba(211, 211, 211, 0.2);
+}
+
 .wrapper{
-  max-width: 1200px;
-  padding: 0 15px;
+  max-width: 1800px;
+  padding: 20px 15px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 320px));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 270px));
+  justify-content: space-around;
+  gap: 40px;
 }

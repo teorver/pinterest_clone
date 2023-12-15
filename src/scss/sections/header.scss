@@ -1,0 +1,51 @@
+.page-header{
+  max-width: 1800px;
+  padding: 40px 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo{
+  width: 150px;
+  text-align: center;
+  background-color: rgba(246, 246, 135, 0.6);
+  padding: 18px;
+  border-radius: 7px;
+  border: 3px solid #f6f61a;
+}
+
+.search-form{
+  width: 75%;
+  text-align: center;
+  background-color: coral;
+  padding: 18px;
+  border-radius: 7px;
+  border: 3px solid #ff4a15;
+}
+
+#header-search{
+  width: 100%;
+  text-align: center;
+  background-color: coral;
+  border: none;
+  outline: none;
+  color: black;
+}
+
+.header-select{
+  text-align: center;
+  background-color: lightgreen;
+  padding: 18px;
+  border-radius: 7px;
+  border: 3px solid green;
+}
+
+#select-board{
+  text-align: center;
+  background-color: lightgreen;
+  border: none;
+  outline: none;
+}
