@@ -15,7 +15,7 @@ export default function createPopUp(cardContent, photo) {
     // Position the pop-up to the clicked card
     const rect = cardContent.getBoundingClientRect();
     popUpWrapper.style.position = 'fixed';
-    popUpWrapper.style.top = `${rect.bottom / 2}px`;
+    popUpWrapper.style.top = `${(rect.bottom / 2) + 15}px`;
     popUpWrapper.style.left = `${rect.left + (rect.width / 2)}px`;
 
     document.body.appendChild(popUpWrapper);
@@ -41,7 +41,7 @@ function createBoardSelect(cardContent, photo) {
     boardBtn1.textContent = 'Board 1';
     boardBtn1.classList.add('board-btn');
     boardBtn1.addEventListener('click', () => {
-        localStorage.setItem('board_1', JSON.stringify(photo));
+        addToBoard('board_1', photo);
         document.body.removeChild(boardSelect);
     });
 
@@ -49,7 +49,7 @@ function createBoardSelect(cardContent, photo) {
     boardBtn2.textContent = 'Board 2';
     boardBtn2.classList.add('board-btn');
     boardBtn2.addEventListener('click', () => {
-        localStorage.setItem('board_2', JSON.stringify(photo));
+        addToBoard('board_2', photo);
         document.body.removeChild(boardSelect);
     });
 
@@ -57,7 +57,7 @@ function createBoardSelect(cardContent, photo) {
     boardBtn3.textContent = 'Board 3';
     boardBtn3.classList.add('board-btn');
     boardBtn3.addEventListener('click', () => {
-        localStorage.setItem('board_3', JSON.stringify(photo));
+        addToBoard('board_3', photo);
         document.body.removeChild(boardSelect);
     });
 
@@ -72,14 +72,15 @@ function createBoardSelect(cardContent, photo) {
     document.body.appendChild(boardSelect);
 }
 
+function addToBoard(boardKey, photo) {
+    const existingData = JSON.parse(localStorage.getItem(boardKey)) ?? [];
+    existingData.push(photo);
+    localStorage.setItem(boardKey, JSON.stringify(existingData));
+}
+
 function showReviewReasons(cardContent, photo) {
-    const reviewModal = document.createElement('div');
-    reviewModal.classList.add('review-modal');
-
     const reviewReasons = document.createElement('div');
-    reviewReasons.classList.add('board-btn');
-    reviewReasons.textContent = 'Select a reason for review...';
-
+    reviewReasons.classList.add('review-modal');
 
     // Create an array of reasons
     const reasonsArray = [
@@ -94,54 +95,42 @@ function showReviewReasons(cardContent, photo) {
 
     // Create checkboxes based on the array
     reasonsArray.forEach((reason, index) => {
+        const checkboxWrapper = document.createElement('div');
+        checkboxWrapper.classList.add('checkbox-wrapper');
+
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = `reason${index + 1}`;
+
         const label = document.createElement('label');
         label.htmlFor = `reason${index + 1}`;
         label.textContent = reason;
-        reviewReasons.appendChild(checkbox);
-        reviewReasons.appendChild(label);
-        reviewReasons.appendChild(document.createElement('br'));
+
+        checkboxWrapper.appendChild(checkbox);
+        checkboxWrapper.appendChild(label);
+        reviewReasons.appendChild(checkboxWrapper);
     });
 
     const submitReviewBtn = document.createElement('button');
     submitReviewBtn.classList.add('board-btn');
     submitReviewBtn.textContent = 'Submit Review';
 
-    reviewModal.append(reviewReasons, submitReviewBtn);
+    reviewReasons.append(submitReviewBtn);
 
     // Position the review modal at the same position as the pop-up
     const rect = cardContent.getBoundingClientRect();
-    reviewModal.style.position = 'fixed';
-    reviewModal.style.top = `${rect.bottom / 2}px`;
-    reviewModal.style.left = `${rect.left + (rect.width / 2)}px`;
+    reviewReasons.style.position = 'fixed';
+    reviewReasons.style.top = `${rect.bottom / 2}px`;
+    reviewReasons.style.left = `${rect.left + (rect.width / 2)}px`;
 
-    document.body.appendChild(reviewModal);
+    document.body.appendChild(reviewReasons);
 
     submitReviewBtn.addEventListener('click', () => {
-        // Handle the submit review button click
-        console.log('Submit Review clicked');
-
-        // Remove the card from local storage
-        removeCardFromLocalStorage(photo);
-
         // Remove the card from the page
         const cardWrapper = cardContent.closest('.card');
         cardWrapper.parentNode.removeChild(cardWrapper);
 
         // Hide the review modal
-        document.body.removeChild(reviewModal);
+        document.body.removeChild(reviewReasons);
     });
-}
-
-function removeCardFromLocalStorage(photo) {
-    // Retrieve cards from local storage
-    const localStoragePhotos = JSON.parse(localStorage.getItem('photos')) || [];
-
-    // Find and remove the selected card from the array
-    const updatedPhotos = localStoragePhotos.filter(item => item.id !== photo.id);
-
-    // Update local storage with the modified array
-    localStorage.setItem('photos', JSON.stringify(updatedPhotos));
 }
