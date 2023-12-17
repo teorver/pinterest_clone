@@ -4,9 +4,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: space-evenly;
   align-items: center;
-  object-fit: contain;
   gap: 10px;
   position: relative;
 }
@@ -18,22 +17,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  object-fit: contain;
-  padding: 90px;
+  cursor: pointer;
 }
 
-.card-hover{
-  width: 10px;
-  height: 5px;
-  padding: 10px;
-  border-radius: 10px;
-  border: 2px solid blue;
-  background-color: lightblue;
-  z-index: 2;
-  position: absolute;
-  right: 20px;
-  bottom: 70px;
-}
+//.card-hover{
+//  width: 10px;
+//  height: 5px;
+//  padding: 10px;
+//  border-radius: 10px;
+//  border: 2px solid blue;
+//  background-color: lightblue;
+//  z-index: 2;
+//  position: absolute;
+//  right: 20px;
+//  bottom: 70px;
+//}
 
 .card-description{
   width: 100%;
@@ -42,15 +40,27 @@
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  padding: 10px 20px;
+  padding: 10px;
+  gap: 20px;
+  position: relative;
+  bottom: 0;
 }
 
 .card-image{
-  border-radius: 30px;
+  width: 30%;
+  border-radius: 100px;
   border: 3px solid deeppink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
 }
 
 .card-text{
   text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
 }
 
