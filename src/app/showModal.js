@@ -1,4 +1,5 @@
 export default function createPopUp(cardContent, photo) {
+    // Define pop-up elements
     const popUpWrapper = document.createElement('div');
     popUpWrapper.classList.add('pop-up_hover');
 
@@ -12,33 +13,35 @@ export default function createPopUp(cardContent, photo) {
 
     popUpWrapper.append(addToBoardBtn, hideCardBtn);
 
-    // Listen for mouse click events
     document.addEventListener('click', onMouseClick);
 
+    // Render pop-up according to mouse position on card
     function onMouseClick(event) {
         // Position the pop-up at the mouse coordinates
         popUpWrapper.style.position = 'fixed';
         popUpWrapper.style.top = `${event.clientY}px`;
         popUpWrapper.style.left = `${event.clientX}px`;
 
-        // Remove the event listener after the pop-up is displayed
         document.removeEventListener('click', onMouseClick);
-
         document.body.appendChild(popUpWrapper);
     }
 
+    // Show modal with the list of available boards
     addToBoardBtn.addEventListener('click', () => {
         document.body.removeChild(popUpWrapper);
         createBoardSelect(cardContent, photo);
     });
 
+    // Show modal with the list of available reasons
     hideCardBtn.addEventListener('click', () => {
         document.body.removeChild(popUpWrapper);
         showReviewReasons(cardContent);
     });
 }
 
+// Create modal with the list of available boards
 function createBoardSelect(cardContent, photo) {
+    // Define modal elements
     const boardSelect = document.createElement('div');
     boardSelect.classList.add('board-select');
 
@@ -68,28 +71,26 @@ function createBoardSelect(cardContent, photo) {
 
     boardSelect.append(boardBtn1, boardBtn2, boardBtn3);
 
-    // Listen for mouse click events
     document.addEventListener('click', onMouseClick);
 
     function onMouseClick(event) {
-        // Position the board select at the mouse coordinates
         boardSelect.style.position = 'fixed';
         boardSelect.style.top = `${event.clientY}px`;
         boardSelect.style.left = `${event.clientX}px`;
 
-        // Remove the event listener after the board select is displayed
         document.removeEventListener('click', onMouseClick);
-
         document.body.appendChild(boardSelect);
     }
 }
 
+// Save card to the selected board and local storage
 function addToBoard(boardKey, photo) {
     const existingData = JSON.parse(localStorage.getItem(boardKey)) ?? [];
     existingData.push(photo);
     localStorage.setItem(boardKey, JSON.stringify(existingData));
 }
 
+// Create modal with the list of available reasons
 function showReviewReasons(cardContent) {
     const reviewReasons = document.createElement('div');
     reviewReasons.classList.add('review-modal');
@@ -129,11 +130,9 @@ function showReviewReasons(cardContent) {
 
     reviewReasons.append(submitReviewBtn);
 
-    // Listen for mouse click events
     document.addEventListener('click', onMouseClick);
 
     function onMouseClick(event) {
-        // Position the review modal at the mouse coordinates
         reviewReasons.style.position = 'fixed';
         reviewReasons.style.top = `${event.clientY}px`;
         reviewReasons.style.left = `${event.clientX}px`;
@@ -144,12 +143,12 @@ function showReviewReasons(cardContent) {
         document.body.appendChild(reviewReasons);
     }
 
+    // Remove the card from the page
     submitReviewBtn.addEventListener('click', () => {
-        // Remove the card from the page
+
         const cardWrapper = cardContent.closest('.card');
         cardWrapper.parentNode.removeChild(cardWrapper);
-
-        // Hide the review modal
+        // Hide the reasons modal
         document.body.removeChild(reviewReasons);
     });
 }
