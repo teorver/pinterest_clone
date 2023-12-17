@@ -78,7 +78,7 @@ function addToBoard(boardKey, photo) {
     localStorage.setItem(boardKey, JSON.stringify(existingData));
 }
 
-function showReviewReasons(cardContent, photo) {
+function showReviewReasons(cardContent) {
     const reviewReasons = document.createElement('div');
     reviewReasons.classList.add('review-modal');
 
