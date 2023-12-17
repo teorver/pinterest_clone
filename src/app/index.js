@@ -14,6 +14,7 @@ const runPinterestApplication = async () => {
         localStorage.setItem('photos', JSON.stringify(photos));
     }
 
+    // Render cards according to the data from local storage or from request
     localStoragePhotos.forEach(value => {
         createCard(value);
     });
