@@ -32,29 +32,33 @@
   gap: 20px;
   padding: 10px;
   position: absolute;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -170%);
   border-radius: 10px;
 
 }
 
 .board-btn{
   width: 150px;
-  background-color: lightblue;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .review-modal{
-  width: 300px;
+  width: 200px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: coral;
-  gap: 20px;
-  position: absolute;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 10%);
   border-radius: 10px;
+  gap: 10px;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
