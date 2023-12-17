@@ -12,24 +12,29 @@ export default function createPopUp(cardContent, photo) {
 
     popUpWrapper.append(addToBoardBtn, hideCardBtn);
 
-    // Position the pop-up to the clicked card
-    const rect = cardContent.getBoundingClientRect();
-    popUpWrapper.style.position = 'fixed';
-    popUpWrapper.style.top = `${(rect.bottom / 2) + 15}px`;
-    popUpWrapper.style.left = `${rect.left + (rect.width / 2)}px`;
+    // Listen for mouse click events
+    document.addEventListener('click', onMouseClick);
 
-    document.body.appendChild(popUpWrapper);
+    function onMouseClick(event) {
+        // Position the pop-up at the mouse coordinates
+        popUpWrapper.style.position = 'fixed';
+        popUpWrapper.style.top = `${event.clientY}px`;
+        popUpWrapper.style.left = `${event.clientX}px`;
+
+        // Remove the event listener after the pop-up is displayed
+        document.removeEventListener('click', onMouseClick);
+
+        document.body.appendChild(popUpWrapper);
+    }
 
     addToBoardBtn.addEventListener('click', () => {
-        // Handle the "Add to Board" button click
         document.body.removeChild(popUpWrapper);
         createBoardSelect(cardContent, photo);
     });
 
     hideCardBtn.addEventListener('click', () => {
-        // Handle the "Leave a Review" button click
         document.body.removeChild(popUpWrapper);
-        showReviewReasons(cardContent, photo);
+        showReviewReasons(cardContent);
     });
 }
 
@@ -63,13 +68,20 @@ function createBoardSelect(cardContent, photo) {
 
     boardSelect.append(boardBtn1, boardBtn2, boardBtn3);
 
-    // Position the board select at the same position as the pop-up
-    const rect = cardContent.getBoundingClientRect();
-    boardSelect.style.position = 'fixed';
-    boardSelect.style.bottom = `${rect.top - 50}px`;
-    boardSelect.style.left = `${rect.left + (rect.width / 2)}px`;
+    // Listen for mouse click events
+    document.addEventListener('click', onMouseClick);
 
-    document.body.appendChild(boardSelect);
+    function onMouseClick(event) {
+        // Position the board select at the mouse coordinates
+        boardSelect.style.position = 'fixed';
+        boardSelect.style.top = `${event.clientY}px`;
+        boardSelect.style.left = `${event.clientX}px`;
+
+        // Remove the event listener after the board select is displayed
+        document.removeEventListener('click', onMouseClick);
+
+        document.body.appendChild(boardSelect);
+    }
 }
 
 function addToBoard(boardKey, photo) {
@@ -117,13 +129,20 @@ function showReviewReasons(cardContent) {
 
     reviewReasons.append(submitReviewBtn);
 
-    // Position the review modal at the same position as the pop-up
-    const rect = cardContent.getBoundingClientRect();
-    reviewReasons.style.position = 'fixed';
-    reviewReasons.style.top = `${rect.bottom / 2}px`;
-    reviewReasons.style.left = `${rect.left + (rect.width / 2)}px`;
+    // Listen for mouse click events
+    document.addEventListener('click', onMouseClick);
 
-    document.body.appendChild(reviewReasons);
+    function onMouseClick(event) {
+        // Position the review modal at the mouse coordinates
+        reviewReasons.style.position = 'fixed';
+        reviewReasons.style.top = `${event.clientY}px`;
+        reviewReasons.style.left = `${event.clientX}px`;
+
+        // Remove the event listener after the review modal is displayed
+        document.removeEventListener('click', onMouseClick);
+
+        document.body.appendChild(reviewReasons);
+    }
 
     submitReviewBtn.addEventListener('click', () => {
         // Remove the card from the page
