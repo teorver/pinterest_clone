@@ -12,11 +12,19 @@ body{
 }
 
 .wrapper{
-  max-width: 1800px;
+  max-width: 1600px;
   padding: 20px 15px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 270px));
   justify-content: space-around;
   gap: 40px;
+
+  @media (max-width: 840px) {
+    width: 100%;
+  }
+
+  @media (max-width: 450px) {
+    width: 100%;
+  }
 }
