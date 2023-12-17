@@ -14,11 +14,9 @@ const runPinterestApplication = async () => {
         localStorage.setItem('photos', JSON.stringify(photos));
     }
 
-    // Write your code
-    //createCard();
     localStoragePhotos.forEach(value => {
         createCard(value);
-    })
+    });
 }
 
 runPinterestApplication();
