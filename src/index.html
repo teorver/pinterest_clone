@@ -17,25 +17,20 @@
             </label>
         </div>
         <div class="header-select">
-            <label for="select-board">Select a board:</label>
+            <label for="select-board"></label>
             <select name="boards" id="select-board">
-                <option value="board__1">Board 1</option>
-                <option value="board__2">Board 2</option>
-                <option value="board__3">Board 3</option>
+                <option value="default__board" id="default__board">Select a board</option>
+                <option value="board__1" id="board__1">Board 1</option>
+                <option value="board__2" id="board__2">Board 2</option>
+                <option value="board__3" id="board__3">Board 3</option>
             </select>
         </div>
     </header>
-    <div class="wrapper" id="root">
-<!--        <div class="card">-->
-<!--            <div class="card-content">Test</div>-->
-<!--            <div class="card-hover"></div>-->
-<!--            <div class="card-description">-->
-<!--                <img src="#" alt="#" class="card-image">-->
-<!--                <span class="card-text">Test</span>-->
-<!--            </div>-->
-<!--        </div>-->
-    </div>
+
+    <div class="wrapper" id="root"></div>
 
     <script defer type="module" src="./app/index.js"></script>
+    <script defer type="module" src="./app/switchBoard.js"></script>
+    <script defer type="module" src="./app/cardSearch.js"></script>
 </body>
 </html>
