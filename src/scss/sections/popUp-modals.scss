@@ -28,20 +28,33 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: lightgreen;
-  color: coral;
-  font-size: 14px;
-  font-weight: 500;
+  background-color: coral;
   gap: 20px;
   padding: 10px;
   position: absolute;
   transform: translate(-50%, -50%);
   border-radius: 10px;
+
 }
 
 .board-btn{
   width: 150px;
-
+  background-color: lightblue;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.review-modal{}
+.review-modal{
+  width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: coral;
+  gap: 20px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
