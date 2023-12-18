@@ -15,8 +15,8 @@ export default function createPopUp(cardContent, photo) {
 
     document.addEventListener('click', onMouseClick);
 
-    // Create overlay to block actions on the page
-    const overlay = document.createElement('div');
+    // Create overlay element
+    const pageOverlay = document.createElement('div');
 
     // Render pop-up according to mouse position on card
     function onMouseClick(event) {
@@ -24,23 +24,23 @@ export default function createPopUp(cardContent, photo) {
         popUpWrapper.style.position = 'fixed';
         popUpWrapper.style.top = `${event.clientY}px`;
         popUpWrapper.style.left = `${event.clientX}px`;
-        overlay.classList.add('overlay');
+        pageOverlay.classList.add('overlay');
 
         document.removeEventListener('click', onMouseClick);
-        document.body.append(popUpWrapper, overlay);
+        document.body.append(popUpWrapper, pageOverlay);
     }
 
     // Show modal with the list of available boards
     addToBoardBtn.addEventListener('click', () => {
         document.body.removeChild(popUpWrapper);
-        document.body.removeChild(overlay);
+        document.body.removeChild(pageOverlay);
         createBoardSelect(cardContent, photo);
     });
 
     // Show modal with the list of available reasons
     hideCardBtn.addEventListener('click', () => {
         document.body.removeChild(popUpWrapper);
-        document.body.removeChild(overlay);
+        document.body.removeChild(pageOverlay);
         showReviewReasons(cardContent);
     });
 }
@@ -57,7 +57,7 @@ function createBoardSelect(cardContent, photo) {
     boardBtn1.addEventListener('click', () => {
         addToBoard('board_1', photo);
         document.body.removeChild(boardSelect);
-        document.body.removeChild(overlay);
+        document.body.removeChild(pageOverlay);
     });
 
     const boardBtn2 = document.createElement('button');
@@ -66,7 +66,7 @@ function createBoardSelect(cardContent, photo) {
     boardBtn2.addEventListener('click', () => {
         addToBoard('board_2', photo);
         document.body.removeChild(boardSelect);
-        document.body.removeChild(overlay);
+        document.body.removeChild(pageOverlay);
     });
 
     const boardBtn3 = document.createElement('button');
@@ -75,23 +75,23 @@ function createBoardSelect(cardContent, photo) {
     boardBtn3.addEventListener('click', () => {
         addToBoard('board_3', photo);
         document.body.removeChild(boardSelect);
-        document.body.removeChild(overlay);
+        document.body.removeChild(pageOverlay);
     });
 
     boardSelect.append(boardBtn1, boardBtn2, boardBtn3);
 
     document.addEventListener('click', onMouseClick);
 
-    const overlay = document.createElement('div');
+    const pageOverlay = document.createElement('div');
 
     function onMouseClick(event) {
         boardSelect.style.position = 'fixed';
         boardSelect.style.top = `${event.clientY}px`;
         boardSelect.style.left = `${event.clientX}px`;
-        overlay.classList.add('overlay');
+        pageOverlay.classList.add('overlay');
 
         document.removeEventListener('click', onMouseClick);
-        document.body.append(boardSelect, overlay);
+        document.body.append(boardSelect, pageOverlay);
     }
 }
 
@@ -144,26 +144,27 @@ function showReviewReasons(cardContent) {
 
     document.addEventListener('click', onMouseClick);
 
-    const overlay = document.createElement('div');
+    const pageOverlay = document.createElement('div');
 
     function onMouseClick(event) {
         reviewReasons.style.position = 'fixed';
         reviewReasons.style.top = `${event.clientY}px`;
         reviewReasons.style.left = `${event.clientX}px`;
-        overlay.classList.add('overlay');
+        pageOverlay.classList.add('overlay');
 
         // Remove the event listener after the review modal is displayed
         document.removeEventListener('click', onMouseClick);
 
-        document.body.append(reviewReasons, overlay);
+        document.body.append(reviewReasons, pageOverlay);
     }
 
     // Remove the card from the page
     submitReviewBtn.addEventListener('click', () => {
         const cardWrapper = cardContent.closest('.card');
         cardWrapper.parentNode.removeChild(cardWrapper);
+
         // Hide the reasons modal
         document.body.removeChild(reviewReasons);
-        document.body.removeChild(overlay);
+        document.body.removeChild(pageOverlay);
     });
 }
