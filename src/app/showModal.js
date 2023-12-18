@@ -37,6 +37,8 @@ export default function createPopUp(cardContent, photo) {
         document.body.removeChild(popUpWrapper);
         showReviewReasons(cardContent);
     });
+
+    return popUpWrapper;
 }
 
 // Create modal with the list of available boards

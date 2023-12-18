@@ -1,6 +1,7 @@
 import createPopUp from "./showModal.js";
 
 const root = document.getElementById('root');
+let currentModal = null;
 
 export default function createCard(value) {
     // Create card wrapper and elements
@@ -34,6 +35,12 @@ export default function createCard(value) {
 
     // Show pop-up on card click
     cardContent.addEventListener('click', () => {
-        createPopUp(cardContent, value);
+        if (currentModal) {
+            document.body.removeChild(currentModal);
+            currentModal = null;
+        }
+
+        currentModal = createPopUp(cardContent, value);
+        document.body.append(currentModal);
     });
 }
