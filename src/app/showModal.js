@@ -15,20 +15,25 @@ export default function createPopUp(cardContent, photo) {
 
     document.addEventListener('click', onMouseClick);
 
+    // Create overlay to block actions on the page
+    const overlay = document.createElement('div');
+
     // Render pop-up according to mouse position on card
     function onMouseClick(event) {
         // Position the pop-up at the mouse coordinates
         popUpWrapper.style.position = 'fixed';
         popUpWrapper.style.top = `${event.clientY}px`;
         popUpWrapper.style.left = `${event.clientX}px`;
+        overlay.classList.add('overlay');
 
         document.removeEventListener('click', onMouseClick);
-        document.body.appendChild(popUpWrapper);
+        document.body.append(popUpWrapper, overlay);
     }
 
     // Show modal with the list of available boards
     addToBoardBtn.addEventListener('click', () => {
         document.body.removeChild(popUpWrapper);
+        document.body.removeChild(overlay);
         createBoardSelect(cardContent, photo);
     });
 
@@ -37,8 +42,6 @@ export default function createPopUp(cardContent, photo) {
         document.body.removeChild(popUpWrapper);
         showReviewReasons(cardContent);
     });
-
-    return popUpWrapper;
 }
 
 // Create modal with the list of available boards
