@@ -8,12 +8,12 @@ const getPinterestData = async () => {
 }
 
 const runPinterestApplication = async () => {
-    let localStoragePhotos = JSON.parse(localStorage.getItem('photos')) || [];
+    let localStoragePhotos = JSON.parse(localStorage.getItem('photos')) ?? [];
 
     if (localStoragePhotos.length === 0) {
         const { photos } = await getPinterestData();
         localStorage.setItem('photos', JSON.stringify(photos));
-        localStoragePhotos = photos; // Update localStoragePhotos with the fetched data
+        localStoragePhotos = photos;
     }
 
     // Render cards according to the data from local storage or from the request
