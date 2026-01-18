@@ -37,7 +37,7 @@ jobs:
 
       - name: Setup
         id: setup
-        run: 'npm install'
+        run: '<command to install dependencies and set up your project>'
 
       - name: Start runner
         id: test-action
@@ -77,13 +77,13 @@ jobs:
           # Example (Python w/ black): "black {{file}}"
           # Example (TypeScript w/ prettier + eslint): "npx prettier --write {{file}} && npx eslint --fix {{file}}"
           # If you need to run a compilation check (e.g. tsc), contact support@usetusk.ai to ensure it is set up correctly.
-          # lintScript: '<your lint command for {{file}}>'
+          lintScript: '<your lint command for {{file}}>'
 
           # The script to run to test the code (adapt accordingly). Required for the test runner.
           # {{file}} placeholder is required and will be replaced by Tusk with the file being tested.
           # Example (pytest): "pytest {{file}}"
           # If your test output is known to contain a lot of console logs, we recommend suppressing these logs (e.g., use --silent / --quiet flags or equivalent).
-          testScript: 'npm test -- {{file}}'
+          testScript: '<your test command for {{file}}>'
 
           # The runner may run tests in parallel.
           # Set this value to 1 if you know that your tests should not be run concurrently in each environment.
