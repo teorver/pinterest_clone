@@ -1,8 +1,7 @@
 import createPopUp from "./showModal.js";
 
-const root = document.getElementById('root');
-
 export default function createCard(value) {
+    const root = document.getElementById('root');
     // Create card wrapper and elements
     const cardWrapper = document.createElement('div');
     cardWrapper.classList.add('card');

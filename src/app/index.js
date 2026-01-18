@@ -7,7 +7,7 @@ const getPinterestData = async () => {
     }
 }
 
-const runPinterestApplication = async () => {
+export const runPinterestApplication = async () => {
     let localStoragePhotos = JSON.parse(localStorage.getItem('photos')) ?? [];
 
     if (localStoragePhotos.length === 0) {

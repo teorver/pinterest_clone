@@ -1,10 +1,11 @@
 import createCard from "./showCard.js";
 
-const selectBoard = document.getElementById('select-board');
-const root = document.getElementById('root');
+export function showBoard() {
+    const selectBoard = document.getElementById('select-board');
+    const root = document.getElementById('root');
 
-// Render board according to the chosen value in select
-function showBoard() {
+    if (!selectBoard || !root) return;
+
     selectBoard.addEventListener('change', () => {
         const selectedBoard = selectBoard.value;
         root.innerHTML = '';
