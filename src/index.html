@@ -25,6 +25,14 @@
                 <option value="board__3" id="board__3">Board 3</option>
             </select>
         </div>
+        <div class="header-select">
+            <label for="sort-cards"></label>
+            <select name="sort" id="sort-cards">
+                <option value="default" id="sort-default">Sort by</option>
+                <option value="alphabetical" id="sort-alphabetical">A-Z</option>
+                <option value="reverse-alphabetical" id="sort-reverse">Z-A</option>
+            </select>
+        </div>
     </header>
 
     <section class="wrapper" id="root">
@@ -45,6 +53,6 @@
     <script defer type="module" src="./app/index.js"></script>
     <script defer type="module" src="./app/switchBoard.js"></script>
     <script defer type="module" src="./app/cardSearch.js"></script>
-    <script defer type="module" src="./app/loadMore.js"></script>
+    <script defer type="module" src="./app/sortCards.js"></script>
 </body>
 </html>
